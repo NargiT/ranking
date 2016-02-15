@@ -69,7 +69,7 @@ public class ContainerTest extends JerseyTest {
   public void testNormalExceptionBehaviour() {
     enable(TestProperties.LOG_TRAFFIC);
     // create a request with invalid json string to cause an exception in Jackson
-    Response response = target().path("404").request("application/json").get();
+    Response response = target().path("rank/404").request("application/json").get();
 
     assertThat(Response.Status.NOT_FOUND.getStatusCode(), CoreMatchers.is(response.getStatus()));
   }

@@ -4,6 +4,8 @@ import fr.nargit.exception.v1.BusinessException;
 
 import javax.ws.rs.WebApplicationException;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * (c) 14-févr.-2016
@@ -26,7 +28,12 @@ public class ErrorMessage {
   }
 
   private String getI18nMessage(Integer code) {
-    return String.format("%d - translation is missing", code);
+    ResourceBundle messagesBundle = ResourceBundle.getBundle("MessagesBundle", Locale.FRANCE);
+    if (messagesBundle == null) {
+      return String.format("%d - translation is missing", code);
+    }
+    // FIXME : make sur the encoding is correct
+    return String.format("%d - %s", code, messagesBundle.getString(String.valueOf(code)));
   }
 
   public ErrorMessage(WebApplicationException exception) {

@@ -35,8 +35,10 @@ public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplica
 
     List<MediaType> supportedMediaTypes = Application.SUPPORTED_MEDIA_TYPES;
 
-    return headers.getAcceptableMediaTypes()
+    final List<MediaType> acceptableMediaTypes = headers.getAcceptableMediaTypes();
+    return acceptableMediaTypes
         .stream()
+        // FIXME : check the spec of the q- value
         .filter(supportedMediaTypes::contains)
         .findFirst()
         .orElseGet(() -> MediaType.APPLICATION_JSON_TYPE);

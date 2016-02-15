@@ -1,6 +1,5 @@
 package fr.nargit.rest.resource.v1;
 
-import fr.nargit.exception.v1.BusinessException;
 import fr.nargit.rest.resource.v1.response.DummyObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,25 +23,6 @@ public class RankResource {
   @Path("{username}/normal")
   public DummyObject getIt(@PathParam("username") String username) {
 
-    LOGGER.info("username {} ", username);
-    LOGGER.warn("username {} ", username);
-    LOGGER.error("username {} ", username);
-    LOGGER.debug("username {} ", username);
-
     return new DummyObject(username, "hello");
-  }
-
-  @GET
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  @Path("{username}/exception")
-  public DummyObject getGenericException(@PathParam("username") String username) {
-    throw new IllegalArgumentException("you suck");
-  }
-
-  @GET
-  @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-  @Path("{username}/businesserror")
-  public DummyObject getBusinessException(@PathParam("username") String username) throws BusinessException {
-    throw new BusinessException(2, "you suck");
   }
 }
