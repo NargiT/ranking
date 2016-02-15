@@ -1,5 +1,5 @@
-import fr.nargit.config.servlet.MyApplication;
-import fr.nargit.rest.resource.response.DummyObject;
+import fr.nargit.config.servlet.ApplicationV1ResourceConfig;
+import fr.nargit.rest.resource.v1.response.DummyObject;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.message.internal.MediaTypes;
@@ -31,7 +31,7 @@ public class ContainerTest extends JerseyTest {
     enable(TestProperties.LOG_TRAFFIC);
     enable(TestProperties.DUMP_ENTITY);
 
-    return new MyApplication();
+    return new ApplicationV1ResourceConfig();
   }
 
   @Override
@@ -65,16 +65,13 @@ public class ContainerTest extends JerseyTest {
     assertThat(serviceWadl.length(), Matchers.greaterThan(1));
   }
 
-  /**
-   * Test, that in case of malformed JSON, the jackson exception mappers will be used and the response will be
-   * 400 - bad request instead of 500 - server error
-   */
   @Test
   public void testNormalExceptionBehaviour() {
     enable(TestProperties.LOG_TRAFFIC);
     // create a request with invalid json string to cause an exception in Jackson
-    Response response = target().path("tototo").request("application/json").get();
+    Response response = target().path("404").request("application/json").get();
 
     assertThat(Response.Status.NOT_FOUND.getStatusCode(), CoreMatchers.is(response.getStatus()));
   }
+
 }

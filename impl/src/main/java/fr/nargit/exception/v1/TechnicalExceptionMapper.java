@@ -1,7 +1,7 @@
-package fr.nargit.exception;
+package fr.nargit.exception.v1;
 
-import fr.nargit.config.application.Application;
-import fr.nargit.rest.resource.response.ErrorMessage;
+import fr.nargit.config.application.v1.Application;
+import fr.nargit.rest.resource.v1.response.ErrorMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

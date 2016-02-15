@@ -1,7 +1,7 @@
-package fr.nargit.rest.resource;
+package fr.nargit.rest.resource.v1;
 
-import fr.nargit.exception.BusinessException;
-import fr.nargit.rest.resource.response.DummyObject;
+import fr.nargit.exception.v1.BusinessException;
+import fr.nargit.rest.resource.v1.response.DummyObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

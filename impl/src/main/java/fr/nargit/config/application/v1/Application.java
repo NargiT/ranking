@@ -1,4 +1,4 @@
-package fr.nargit.config.application;
+package fr.nargit.config.application.v1;
 
 import javax.ws.rs.core.MediaType;
 import java.util.Arrays;

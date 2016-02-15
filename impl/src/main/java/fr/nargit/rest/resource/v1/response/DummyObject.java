@@ -1,4 +1,4 @@
-package fr.nargit.rest.resource.response;
+package fr.nargit.rest.resource.v1.response;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

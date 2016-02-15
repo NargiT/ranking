@@ -61,5 +61,4 @@ buildNumber.properties
 ### Mercurial template
 /.hg/*
 */.hg/*
-.hgignore
 

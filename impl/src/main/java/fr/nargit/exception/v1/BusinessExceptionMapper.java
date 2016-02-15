@@ -1,9 +1,10 @@
-package fr.nargit.exception;
+package fr.nargit.exception.v1;
 
-import fr.nargit.config.application.Application;
-import fr.nargit.rest.resource.response.ErrorMessage;
+import fr.nargit.config.application.v1.Application;
+import fr.nargit.rest.resource.v1.response.ErrorMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
@@ -18,14 +19,17 @@ import java.util.List;
  * @author tigran-mac
  */
 @Provider
-public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplicationException> {
+public class BusinessExceptionMapper implements ExceptionMapper<BusinessException> {
+
+  private static final Logger LOGGER = LoggerFactory.getLogger(BusinessExceptionMapper.class);
 
   @Context
   private HttpHeaders headers;
 
   @Override
-  public Response toResponse(WebApplicationException exception) {
-    return Response.status(exception.getResponse().getStatus())
+  public Response toResponse(BusinessException exception) {
+    LOGGER.warn("The client is a noob : {}",exception.getClass().getCanonicalName());
+    return Response.status(Response.Status.BAD_REQUEST)
         .entity(new ErrorMessage(exception))
         .type(getMediaType())
         .build();
@@ -41,4 +45,5 @@ public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplica
         .findFirst()
         .orElseGet(() -> MediaType.APPLICATION_JSON_TYPE);
   }
+
 }

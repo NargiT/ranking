@@ -10,11 +10,11 @@ import javax.ws.rs.ApplicationPath;
  *
  * @author tigran-mac
  */
-@ApplicationPath("rest")
-public class MyApplication extends ResourceConfig {
+@ApplicationPath("api/v2")
+public class ApplicationV2ResourceConfig extends ResourceConfig {
 
-  public MyApplication() {
-    packages("fr.nargit.rest.resource", "fr.nargit.exception")
+  public ApplicationV2ResourceConfig() {
+    packages("fr.nargit.rest.resource.v2", "fr.nargit.exception.v2")
         .register(JacksonFeature.class);
     ;
     ;

@@ -1,4 +1,4 @@
-package fr.nargit.exception;
+package fr.nargit.exception.v1;
 
 /**
  * (c) 14-févr.-2016
