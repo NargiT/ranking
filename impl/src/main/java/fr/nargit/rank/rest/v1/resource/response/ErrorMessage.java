@@ -1,6 +1,6 @@
-package fr.nargit.rest.resource.v1.response;
+package fr.nargit.rank.rest.v1.resource.response;
 
-import fr.nargit.exception.v1.BusinessException;
+import fr.nargit.rank.rest.v1.exception.BusinessException;
 
 import javax.ws.rs.WebApplicationException;
 import javax.xml.bind.annotation.XmlRootElement;

@@ -1,6 +1,6 @@
-package fr.nargit.rest.resource.v1;
+package fr.nargit.rank.rest.v1.resource;
 
-import fr.nargit.rest.resource.v1.response.DummyObject;
+import fr.nargit.rank.rest.v1.resource.response.DummyObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,5 +1,5 @@
-import fr.nargit.config.servlet.ApplicationV1ResourceConfig;
-import fr.nargit.rest.resource.v1.response.DummyObject;
+import fr.nargit.rank.servlet.ApplicationV1ResourceConfig;
+import fr.nargit.rank.rest.v1.resource.response.DummyObject;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.message.internal.MediaTypes;

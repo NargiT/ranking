@@ -1,4 +1,4 @@
-package fr.nargit.exception.v1;
+package fr.nargit.rank.rest.v1.exception;
 
 /**
  * (c) 14-févr.-2016

@@ -1,4 +1,4 @@
-package fr.nargit.config.servlet;
+package fr.nargit.rank.servlet;
 
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -14,7 +14,7 @@ import javax.ws.rs.ApplicationPath;
 public class ApplicationV1ResourceConfig extends ResourceConfig {
 
   public ApplicationV1ResourceConfig() {
-    packages("fr.nargit.rest.resource.v1", "fr.nargit.exception.v1")
+    packages("fr.nargit.rank.rest.v1")
         .register(JacksonFeature.class);
     ;
     ;

@@ -1,7 +1,8 @@
-package fr.nargit.exception.v1;
+package fr.nargit.rank.rest.v1.exception;
 
-import fr.nargit.config.application.v1.Application;
-import fr.nargit.rest.resource.v1.response.ErrorMessage;
+import fr.nargit.rank.rest.v1.Config;
+import fr.nargit.rank.rest.v1.resource.response.ErrorMessage;
+import fr.nargit.rank.utils.WebServiceUtils;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
@@ -10,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
-import java.util.List;
+import java.util.Locale;
 
 /**
  * (c) 14-févr.-2016
@@ -27,20 +28,9 @@ public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplica
   public Response toResponse(WebApplicationException exception) {
     return Response.status(exception.getResponse().getStatus())
         .entity(new ErrorMessage(exception))
-        .type(getMediaType())
+        .type(WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config.SUPPORTED_MEDIA_TYPES,
+            MediaType.APPLICATION_JSON_TYPE))
+        .language(WebServiceUtils.supportOf(headers.getAcceptableLanguages(), Config.SUPPORTED_LOCALES, Locale.FRANCE))
         .build();
-  }
-
-  private MediaType getMediaType() {
-
-    List<MediaType> supportedMediaTypes = Application.SUPPORTED_MEDIA_TYPES;
-
-    final List<MediaType> acceptableMediaTypes = headers.getAcceptableMediaTypes();
-    return acceptableMediaTypes
-        .stream()
-        // FIXME : check the spec of the q- value
-        .filter(supportedMediaTypes::contains)
-        .findFirst()
-        .orElseGet(() -> MediaType.APPLICATION_JSON_TYPE);
   }
 }
