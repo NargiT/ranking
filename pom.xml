@@ -11,5 +11,6 @@
 
 	<modules>
 		<module>impl</module>
+		<module>webapp</module>
 	</modules>
 </project>

@@ -1,0 +1,21 @@
+version: '2'
+services:
+  ranking-webapp:
+    build: webapp
+    ports:
+      - "23455:80"
+    volumes:
+      - /d/code/ranking-service/webapp/dist:/usr/share/nginx/html/
+  ranking-service:
+    build: impl
+    ports:
+      - "23456:8080"
+  nginx:
+    image: nginx
+    ports:
+      - "8080:80"
+    links:
+      - "ranking-service"
+      - "ranking-webapp"
+    volumes:
+      - /d/code/ranking-service/proxy:/etc/nginx/conf.d/
