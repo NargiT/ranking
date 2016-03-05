@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
-import java.util.Locale;
+import java.util.Optional;
 
 /**
  * (c) 14-févr.-2016
@@ -30,11 +30,12 @@ public class TechnicalExceptionMapper implements ExceptionMapper<Throwable> {
   @Override
   public Response toResponse(Throwable exception) {
     LOGGER.error("D'oh !", exception);
+    final Optional<MediaType> mediaType = WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config
+        .SUPPORTED_MEDIA_TYPES,
+        MediaType.APPLICATION_JSON_TYPE);
     return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
         .entity(new ErrorMessage(exception))
-        .type(WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config.SUPPORTED_MEDIA_TYPES,
-            MediaType.APPLICATION_JSON_TYPE))
-        .language(WebServiceUtils.supportOf(headers.getAcceptableLanguages(), Config.SUPPORTED_LOCALES, Locale.FRANCE))
+        .type(mediaType.isPresent() ? mediaType.get() : null)
         .build();
   }
 }

@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
-import java.util.Locale;
+import java.util.Optional;
 
 /**
  * (c) 14-févr.-2016
@@ -30,11 +30,16 @@ public class BusinessExceptionMapper implements ExceptionMapper<BusinessExceptio
   @Override
   public Response toResponse(BusinessException exception) {
     LOGGER.warn("The client is a noob : {}", exception.getClass().getCanonicalName());
+    final Optional<MediaType> mediaType = WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config
+            .SUPPORTED_MEDIA_TYPES,
+        MediaType.APPLICATION_JSON_TYPE);
+
+    if (mediaType.isPresent()) {
+      mediaType.get().getParameters();
+    }
     return Response.status(Response.Status.BAD_REQUEST)
         .entity(new ErrorMessage(exception))
-        .type(WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config.SUPPORTED_MEDIA_TYPES,
-            MediaType.APPLICATION_JSON_TYPE))
-        .language(WebServiceUtils.supportOf(headers.getAcceptableLanguages(), Config.SUPPORTED_LOCALES, Locale.FRANCE))
+        .type(mediaType.get())
         .build();
   }
 }

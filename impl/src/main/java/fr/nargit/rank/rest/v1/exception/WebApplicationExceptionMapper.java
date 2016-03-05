@@ -11,7 +11,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
-import java.util.Locale;
 
 /**
  * (c) 14-févr.-2016
@@ -30,7 +29,6 @@ public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplica
         .entity(new ErrorMessage(exception))
         .type(WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config.SUPPORTED_MEDIA_TYPES,
             MediaType.APPLICATION_JSON_TYPE))
-        .language(WebServiceUtils.supportOf(headers.getAcceptableLanguages(), Config.SUPPORTED_LOCALES, Locale.FRANCE))
         .build();
   }
 }
