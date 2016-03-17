@@ -9,9 +9,9 @@ import java.util.Optional;
  */
 public class WebServiceUtils {
 
-  public static Optional<MediaType> supportOf(List<MediaType> requested, List<MediaType> supported, MediaType defaultMediaType) {
+  public static MediaType supportOf(List<MediaType> requested, List<MediaType> supported, MediaType defaultMediaType) {
 
-    return requested.stream()
+    Optional<MediaType> mediaType = requested.stream()
         .filter(v -> {
           if (v.getParameters().isEmpty()) {
             return supported.contains(v);
@@ -20,5 +20,7 @@ public class WebServiceUtils {
           }
         })
         .findFirst();
+
+    return mediaType.isPresent() ? mediaType.get() : defaultMediaType;
   }
 }

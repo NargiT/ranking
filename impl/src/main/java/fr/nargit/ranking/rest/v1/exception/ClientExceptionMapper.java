@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
-import java.util.Optional;
 
 /**
  * (c) 14-févr.-2016
@@ -32,17 +31,13 @@ public class ClientExceptionMapper implements ExceptionMapper<RankingException> 
   public Response toResponse(RankingException exception) {
     LOGGER.warn("The client is a noob : {}", exception.getClass().getCanonicalName());
 
-    final Optional<MediaType> mediaType = WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config
+    final MediaType mediaType = WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config
             .SUPPORTED_MEDIA_TYPES,
         MediaType.APPLICATION_JSON_TYPE);
 
-    if (mediaType.isPresent()) {
-      mediaType.get().getParameters();
-    }
-
     return Response.status(Response.Status.BAD_REQUEST)
         .entity(new ErrorMessage(exception))
-        .type(mediaType.get())
+        .type(mediaType)
         .build();
   }
 }

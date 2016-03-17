@@ -28,7 +28,7 @@ public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplica
     return Response.status(exception.getResponse().getStatus())
         .entity(new ErrorMessage(exception))
         .type(WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config.SUPPORTED_MEDIA_TYPES,
-            MediaType.APPLICATION_JSON_TYPE).get())
+            MediaType.APPLICATION_JSON_TYPE))
         .build();
   }
 }
