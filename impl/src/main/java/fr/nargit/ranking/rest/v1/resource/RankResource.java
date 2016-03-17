@@ -1,6 +1,6 @@
-package fr.nargit.rank.rest.v1.resource;
+package fr.nargit.ranking.rest.v1.resource;
 
-import fr.nargit.rank.rest.v1.resource.response.DummyObject;
+import fr.nargit.ranking.rest.v1.response.DummyObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("rank")
+@Path("ranking")
 public class RankResource {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(RankResource.class);

@@ -1,4 +1,4 @@
-package fr.nargit.rank.utils;
+package fr.nargit.ranking.utils;
 
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Optional;
  */
 public class WebServiceUtils {
 
-  public static Optional<MediaType> supportOf(List<MediaType> requested, List<MediaType> supported, MediaType value) {
+  public static Optional<MediaType> supportOf(List<MediaType> requested, List<MediaType> supported, MediaType defaultMediaType) {
 
     return requested.stream()
         .filter(v -> {

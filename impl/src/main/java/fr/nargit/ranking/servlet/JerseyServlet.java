@@ -1,4 +1,4 @@
-package fr.nargit.rank.servlet;
+package fr.nargit.ranking.servlet;
 
 /**
  * (c) 08-févr.-2016

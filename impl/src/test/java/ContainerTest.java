@@ -1,5 +1,5 @@
-import fr.nargit.rank.servlet.ApplicationV1ResourceConfig;
-import fr.nargit.rank.rest.v1.resource.response.DummyObject;
+import fr.nargit.ranking.servlet.ApplicationV1ResourceConfig;
+import fr.nargit.ranking.rest.v1.response.DummyObject;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.message.internal.MediaTypes;
@@ -43,7 +43,7 @@ public class ContainerTest extends JerseyTest {
   public void testNormalResponse() {
     WebTarget target = target();
     DummyObject responseMsg = target
-        .path("rank/{username}/normal")
+        .path("ranking/{username}/normal")
         .resolveTemplate("username", "toto")
         .request(MediaType.APPLICATION_JSON)
         .get(DummyObject.class);
@@ -69,7 +69,7 @@ public class ContainerTest extends JerseyTest {
   public void testNormalExceptionBehaviour() {
     enable(TestProperties.LOG_TRAFFIC);
     // create a request with invalid json string to cause an exception in Jackson
-    Response response = target().path("rank/404").request("application/json").get();
+    Response response = target().path("ranking/404").request("application/json").get();
 
     assertThat(Response.Status.NOT_FOUND.getStatusCode(), CoreMatchers.is(response.getStatus()));
   }

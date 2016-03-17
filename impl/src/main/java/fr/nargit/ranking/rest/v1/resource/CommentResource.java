@@ -1,6 +1,6 @@
-package fr.nargit.rank.rest.v1.resource;
+package fr.nargit.ranking.rest.v1.resource;
 
-import fr.nargit.rank.rest.v1.resource.response.Comment;
+import fr.nargit.ranking.rest.v1.response.Comment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,8 +22,7 @@ public class CommentResource {
   @Path("{id}")
   public Comment getComment(@PathParam("id") String id) {
     LOGGER.info("Requesting one comment");
-    Comment comment = buildComment(1);
-    return comment;
+    return buildComment(1);
   }
 
   @GET

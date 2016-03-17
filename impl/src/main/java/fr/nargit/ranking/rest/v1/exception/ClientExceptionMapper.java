@@ -1,8 +1,9 @@
-package fr.nargit.rank.rest.v1.exception;
+package fr.nargit.ranking.rest.v1.exception;
 
-import fr.nargit.rank.rest.v1.Config;
-import fr.nargit.rank.rest.v1.resource.response.ErrorMessage;
-import fr.nargit.rank.utils.WebServiceUtils;
+import fr.nargit.ranking.rest.v1.Config;
+import fr.nargit.ranking.rest.v1.response.ErrorMessage;
+import fr.nargit.ranking.service.exception.RankingException;
+import fr.nargit.ranking.utils.WebServiceUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,16 +21,17 @@ import java.util.Optional;
  * @author tigran-mac
  */
 @Provider
-public class BusinessExceptionMapper implements ExceptionMapper<BusinessException> {
+public class ClientExceptionMapper implements ExceptionMapper<RankingException> {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(BusinessExceptionMapper.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(ClientExceptionMapper.class);
 
   @Context
   private HttpHeaders headers;
 
   @Override
-  public Response toResponse(BusinessException exception) {
+  public Response toResponse(RankingException exception) {
     LOGGER.warn("The client is a noob : {}", exception.getClass().getCanonicalName());
+
     final Optional<MediaType> mediaType = WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config
             .SUPPORTED_MEDIA_TYPES,
         MediaType.APPLICATION_JSON_TYPE);
@@ -37,6 +39,7 @@ public class BusinessExceptionMapper implements ExceptionMapper<BusinessExceptio
     if (mediaType.isPresent()) {
       mediaType.get().getParameters();
     }
+
     return Response.status(Response.Status.BAD_REQUEST)
         .entity(new ErrorMessage(exception))
         .type(mediaType.get())

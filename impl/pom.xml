@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>fr.nargit</groupId>
+	<groupId>fr.nargit.ranking</groupId>
 	<artifactId>ranking</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
@@ -91,6 +91,12 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-library</artifactId>
 			<version>1.3</version>
+		</dependency>
+		<!-- Business -->
+		<dependency>
+			<groupId>fr.nargit.rating</groupId>
+			<artifactId>algorithms</artifactId>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -1,8 +1,8 @@
-package fr.nargit.rank.rest.v1.exception;
+package fr.nargit.ranking.rest.v1.exception;
 
-import fr.nargit.rank.rest.v1.Config;
-import fr.nargit.rank.rest.v1.resource.response.ErrorMessage;
-import fr.nargit.rank.utils.WebServiceUtils;
+import fr.nargit.ranking.rest.v1.Config;
+import fr.nargit.ranking.rest.v1.response.ErrorMessage;
+import fr.nargit.ranking.utils.WebServiceUtils;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
@@ -28,7 +28,7 @@ public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplica
     return Response.status(exception.getResponse().getStatus())
         .entity(new ErrorMessage(exception))
         .type(WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config.SUPPORTED_MEDIA_TYPES,
-            MediaType.APPLICATION_JSON_TYPE))
+            MediaType.APPLICATION_JSON_TYPE).get())
         .build();
   }
 }

@@ -1,4 +1,4 @@
-package fr.nargit.rank.rest.v1.resource.response;
+package fr.nargit.ranking.rest.v1.response;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
