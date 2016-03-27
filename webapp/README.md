@@ -13,15 +13,4 @@ Lifecycle scripts included in ranking-webapp:
     nothing to run
 
 ### Commands
-Available via `npm run-script`:
-
-  build:js  
-    browserify -t [ babelify --presets [ react ] ] assets/scripts/components.js -o dist/app.js  
-  build:html  
-    cp assets/html/index.html dist/index.html  
-  build  
-    npm run build:js & npm run build:html  
-  start-http  
-    node node_modules/http-server/bin/http-server dist  
-  build:run  
-    npm run build & npm run start-http  
+Help `npm run-script`:
