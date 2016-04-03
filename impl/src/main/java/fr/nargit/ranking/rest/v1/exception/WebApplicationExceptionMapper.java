@@ -1,8 +1,10 @@
 package fr.nargit.ranking.rest.v1.exception;
 
-import fr.nargit.ranking.rest.v1.Config;
+import fr.nargit.ranking.config.Config;
 import fr.nargit.ranking.rest.v1.response.ErrorMessage;
 import fr.nargit.ranking.utils.WebServiceUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
@@ -20,11 +22,15 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplicationException> {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(TechnicalExceptionMapper.class);
+
   @Context
   private HttpHeaders headers;
 
   @Override
   public Response toResponse(WebApplicationException exception) {
+    LOGGER.error("D'oh !", exception);
+
     return Response.status(exception.getResponse().getStatus())
         .entity(new ErrorMessage(exception))
         .type(WebServiceUtils.supportOf(headers.getAcceptableMediaTypes(), Config.SUPPORTED_MEDIA_TYPES,

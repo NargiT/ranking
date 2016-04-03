@@ -1,6 +1,6 @@
 package fr.nargit.ranking.rest.v1.exception;
 
-import fr.nargit.ranking.rest.v1.Config;
+import fr.nargit.ranking.config.Config;
 import fr.nargit.ranking.rest.v1.response.ErrorMessage;
 import fr.nargit.ranking.service.exception.RankingException;
 import fr.nargit.ranking.utils.WebServiceUtils;

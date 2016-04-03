@@ -1,5 +1,4 @@
 import fr.nargit.ranking.servlet.ApplicationV1ResourceConfig;
-import fr.nargit.ranking.rest.v1.response.DummyObject;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.message.internal.MediaTypes;
@@ -13,7 +12,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.assertThat;
@@ -39,7 +37,7 @@ public class ContainerTest extends JerseyTest {
     config.register(new JacksonFeature());
   }
 
-  @Test
+/*  @Test
   public void testNormalResponse() {
     WebTarget target = target();
     DummyObject responseMsg = target
@@ -50,12 +48,12 @@ public class ContainerTest extends JerseyTest {
     assertThat(responseMsg, CoreMatchers.notNullValue());
     assertThat(responseMsg.greeting, CoreMatchers.is("hello"));
     assertThat(responseMsg.username, CoreMatchers.is("toto"));
-  }
+  }*/
 
   /**
    * Test if a WADL document is available at the relative path
    * "application.wadl".
-   * <p>
+   * <p/>
    */
   @Test
   public void testApplicationWadl() {

@@ -86,6 +86,28 @@
 			<scope>test</scope>
 		</dependency>
 		<!--END-->
+		<!--Spring Integration -->
+		<dependency>
+			<groupId>org.glassfish.jersey.ext</groupId>
+			<artifactId>jersey-spring3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<!--END-->
+		<!--Database-->
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-sql</artifactId>
+			<version>${querydsl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.191</version>
+		</dependency>
+		<!--END-->
 		<!--Common-->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -122,11 +144,39 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
 			</plugin>
+			<plugin>
+				<groupId>com.querydsl</groupId>
+				<artifactId>querydsl-maven-plugin</artifactId>
+				<version>${querydsl.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>export</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<jdbcDriver>org.h2.Driver</jdbcDriver>
+					<jdbcUrl>jdbc:h2:${project.basedir}/target/testdb;create=true</jdbcUrl>
+					<packageName>fr.nargit.ranking.domain</packageName>
+					<sourceFolder />
+					<targetFolder>${project.basedir}/target/generated-sources/java</targetFolder>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>1.4.191</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<querydsl.version>4.0.7</querydsl.version>
 	</properties>
 </project>

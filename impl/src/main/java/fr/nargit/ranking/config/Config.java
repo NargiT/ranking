@@ -1,4 +1,4 @@
-package fr.nargit.ranking.rest.v1;
+package fr.nargit.ranking.config;
 
 import javax.ws.rs.core.MediaType;
 import java.util.Arrays;

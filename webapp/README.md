@@ -14,3 +14,9 @@ Lifecycle scripts included in ranking-webapp:
 
 ### Commands
 Help `npm run-script`:
+
+### Technologies
+* http://www.material-ui.com/
+* React
+* Node.js
+* Jquery
