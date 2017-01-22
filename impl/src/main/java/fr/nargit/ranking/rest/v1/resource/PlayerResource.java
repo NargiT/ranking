@@ -1,8 +1,8 @@
 package fr.nargit.ranking.rest.v1.resource;
 
+import fr.nargit.ranking.player.PlayerManager;
 import fr.nargit.ranking.rest.v1.entity.Player;
 import fr.nargit.ranking.rest.v1.response.PlayerResponse;
-import fr.nargit.ranking.service.PlayerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +28,7 @@ public class PlayerResource {
   private static final Logger LOGGER = LoggerFactory.getLogger(PlayerResource.class);
 
   @Inject
-  PlayerService playerService;
+  PlayerManager playerManager;
 
   @GET
   public List<PlayerResponse> getPlayers() {
@@ -39,13 +39,12 @@ public class PlayerResource {
   @GET
   @Path("{username}")
   public PlayerResponse getPlayers(@PathParam("username") String username) {
-    LOGGER.info("getPlayer({})", username);
-    playerService.getPlayer();
+    LOGGER.info("id({})", username);
     return new PlayerResponse();
   }
 
   @POST
-  public PlayerResponse createPlayer(Player player) {
+  public PlayerResponse createPlayer(fr.nargit.ranking.rest.v1.entity.Player player) {
     LOGGER.info("createPlayer()");
     return new PlayerResponse();
   }

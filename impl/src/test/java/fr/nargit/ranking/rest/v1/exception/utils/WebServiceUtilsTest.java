@@ -1,4 +1,4 @@
-package fr.nargit.ranking.utils;
+package fr.nargit.ranking.rest.v1.exception.utils;
 
 import fr.nargit.ranking.rest.v1.exception.utils.WebServiceUtils;
 import org.hamcrest.CoreMatchers;
