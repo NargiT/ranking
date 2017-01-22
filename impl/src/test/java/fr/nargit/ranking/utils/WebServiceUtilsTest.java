@@ -1,5 +1,6 @@
 package fr.nargit.ranking.utils;
 
+import fr.nargit.ranking.rest.v1.exception.utils.WebServiceUtils;
 import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;

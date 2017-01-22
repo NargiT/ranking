@@ -1,4 +1,4 @@
-package fr.nargit.ranking.utils;
+package fr.nargit.ranking.rest.v1.exception.utils;
 
 import javax.ws.rs.core.MediaType;
 import java.util.List;

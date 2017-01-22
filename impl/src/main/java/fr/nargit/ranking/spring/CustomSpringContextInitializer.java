@@ -1,4 +1,4 @@
-package fr.nargit.ranking.config;
+package fr.nargit.ranking.spring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,7 +6,6 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
 import javax.servlet.ServletContext;
@@ -27,12 +26,19 @@ public class CustomSpringContextInitializer implements WebApplicationInitializer
   @Override
   public void onStartup(ServletContext servletContext) throws ServletException {
     if (servletContext.getInitParameter("contextConfigLocation") == null) {
-      LOGGER.info("Start CustomSpringContextInitializer intizializer");
-      servletContext.setInitParameter("contextConfigLocation", "fr.nargit.ranking.config");
-      WebApplicationContext rootAppContext = new AnnotationConfigWebApplicationContext();
-      servletContext.addListener(new ContextLoaderListener(rootAppContext));
+      LOGGER.info("Start CustomSpringContextInitializer initializer");
+      servletContext.addListener(new ContextLoaderListener(configureSpringContext()));
+
+      // Allow to skip org.glassfish.jersey.server.spring.SpringWebApplicationInitializer#onStartup
+      servletContext.setInitParameter("contextConfigLocation", "");
     } else {
       LOGGER.info("contextConfigLocation is already define, skipping this initialization");
     }
+  }
+
+  public AnnotationConfigWebApplicationContext configureSpringContext() {
+    final AnnotationConfigWebApplicationContext sprintRootContext = new AnnotationConfigWebApplicationContext();
+    sprintRootContext.register(ApplicationConfig.class);
+    return sprintRootContext;
   }
 }

@@ -1,6 +1,5 @@
 import fr.nargit.ranking.servlet.ApplicationV1ResourceConfig;
-import org.glassfish.jersey.client.ClientConfig;
-import org.glassfish.jersey.jackson.JacksonFeature;
+import fr.nargit.ranking.spring.CustomSpringContextInitializer;
 import org.glassfish.jersey.message.internal.MediaTypes;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
@@ -22,19 +21,17 @@ import static org.junit.Assert.assertThat;
  * @author tigran-mac
  */
 @RunWith(ConcurrentRunner.class)
-public class ContainerTest extends JerseyTest {
+public class ContainerV1Test extends JerseyTest {
 
   @Override
   protected ResourceConfig configure() {
     enable(TestProperties.LOG_TRAFFIC);
     enable(TestProperties.DUMP_ENTITY);
 
-    return new ApplicationV1ResourceConfig();
-  }
-
-  @Override
-  protected void configureClient(ClientConfig config) {
-    config.register(new JacksonFeature());
+    // configure test context because WebApplicationInitializer is not call from JerseyTest
+    final ApplicationV1ResourceConfig resourceConfig = new ApplicationV1ResourceConfig();
+    resourceConfig.property("contextConfig", new CustomSpringContextInitializer().configureSpringContext());
+    return resourceConfig;
   }
 
 /*  @Test
