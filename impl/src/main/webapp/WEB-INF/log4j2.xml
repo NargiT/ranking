@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="debug" name="app" monitorInterval="5">
-	<Properties>
-		<Property name="filename">${web:initParam.my.log.path}/logs/${web:contextPath}.log</Property>
-		<Property name="archive.filename">
-			${web:initParam.my.log.path}/logs/archives/$${date:yyyy-MM}/${web:contextPath}-%d{MM-dd-yyyy}-%i.log.gz
-		</Property>
-	</Properties>
-	<Appenders>
-		<RollingFile name="ROLLING" fileName="${filename}" filePattern="${archive.filename}">
-			<PatternLayout>
-				<Pattern>%d{DEFAULT} [%thread] %-5level %class{36} - %msg%n</Pattern>
-			</PatternLayout>
-			<Policies>
-				<TimeBasedTriggeringPolicy/>
-				<SizeBasedTriggeringPolicy size="250 MB"/>
-			</Policies>
-			<DefaultRolloverStrategy max="7"/>
-		</RollingFile>
+    <Properties>
+        <Property name="filename">${web:initParam.my.log.path}/logs/${web:contextPath}.log</Property>
+        <Property name="archive.filename">
+            ${web:initParam.my.log.path}/logs/archives/$${date:yyyy-MM}/${web:contextPath}-%d{MM-dd-yyyy}-%i.log.gz
+        </Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="ROLLING" fileName="${filename}" filePattern="${archive.filename}">
+            <PatternLayout>
+                <Pattern>%d{DEFAULT} [%thread] %-5level %class{36} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="7"/>
+        </RollingFile>
 
-		<Console name="STDOUT" target="SYSTEM_OUT" follow="true">
-			<PatternLayout>
-				<Pattern>%highlight{%d{DEFAULT} [%thread] %-5level %class{36} - %msg%n}</Pattern>
-			</PatternLayout>
-		</Console>
-	</Appenders>
-	<Loggers>
-		<Root level="all">
-			<AppenderRef ref="ROLLING" level="info"/>
-			<AppenderRef ref="STDOUT" level="trace"/>
-		</Root>
-	</Loggers>
+        <Console name="STDOUT" target="SYSTEM_OUT" follow="true">
+            <PatternLayout>
+                <Pattern>%highlight{%d{DEFAULT} [%thread] %-5level %class{36} - %msg%n}</Pattern>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="ROLLING" level="info"/>
+            <AppenderRef ref="STDOUT" level="trace"/>
+        </Root>
+    </Loggers>
 </Configuration>

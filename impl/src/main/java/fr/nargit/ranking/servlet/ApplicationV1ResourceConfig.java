@@ -13,8 +13,8 @@ import javax.ws.rs.ApplicationPath;
 @ApplicationPath("api/v1")
 public class ApplicationV1ResourceConfig extends ResourceConfig {
 
-  public ApplicationV1ResourceConfig() {
-    packages("fr.nargit.ranking.rest.v1")
-        .register(JacksonFeature.class);
-  }
+    public ApplicationV1ResourceConfig() {
+        packages("fr.nargit.ranking.rest.v1")
+                .register(JacksonFeature.class);
+    }
 }
