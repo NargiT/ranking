@@ -1,5 +1,7 @@
 package fr.nargit.ranking.player;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.Set;
  *
  * @author tigran-mac
  */
+@Repository
 public class PlayerManagerPojo implements PlayerManager {
 
   private Set<Player> players;

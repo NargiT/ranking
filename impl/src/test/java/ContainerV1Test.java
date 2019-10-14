@@ -8,7 +8,6 @@ import org.glassfish.jersey.test.TestProperties;
 import org.glassfish.jersey.test.util.runner.ConcurrentRunner;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -38,17 +37,17 @@ public class ContainerV1Test extends JerseyTest {
     }
 
     @Test
-    @Ignore("Need to be fixed")
     public void testNormalResponse() {
         WebTarget target = target();
-        PlayerResponse responseMsg = target
-                .path("api/v1/players/{username}/normal")
+        PlayerResponse playerResponse = target
+                .path("players/{username}")
                 .resolveTemplate("username", "toto")
                 .request(MediaType.APPLICATION_JSON)
                 .get(PlayerResponse.class);
-        assertThat(responseMsg, CoreMatchers.notNullValue());
-        assertThat(responseMsg.getPlayerId(), CoreMatchers.nullValue());
-        assertThat(responseMsg.getUsername(), CoreMatchers.nullValue());
+
+        assertThat(playerResponse, CoreMatchers.notNullValue());
+        assertThat(playerResponse.getPlayerId(), CoreMatchers.nullValue());
+        assertThat(playerResponse.getUsername(), CoreMatchers.nullValue());
     }
 
     /**
@@ -68,7 +67,9 @@ public class ContainerV1Test extends JerseyTest {
     public void testNormalExceptionBehaviour() {
         enable(TestProperties.LOG_TRAFFIC);
         // create a request with invalid json string to cause an exception in Jackson
-        Response response = target().path("ranking/404").request("application/json").get();
+        Response response = target().path("ranking-service/404")
+                .request(MediaType.APPLICATION_JSON)
+                .get();
 
         assertThat(Response.Status.NOT_FOUND.getStatusCode(), CoreMatchers.is(response.getStatus()));
     }
