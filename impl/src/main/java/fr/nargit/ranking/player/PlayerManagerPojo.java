@@ -12,7 +12,6 @@ import java.util.Set;
  *
  * @author tigran-mac
  */
-@Repository
 public class PlayerManagerPojo implements PlayerManager {
 
   private Set<Player> players;

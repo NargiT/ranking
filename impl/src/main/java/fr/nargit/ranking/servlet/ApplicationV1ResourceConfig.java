@@ -1,5 +1,6 @@
 package fr.nargit.ranking.servlet;
 
+import fr.nargit.ranking.player.PlayerManagerPojo;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.wadl.WadlFeature;
