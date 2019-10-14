@@ -2,6 +2,7 @@ package fr.nargit.ranking.servlet;
 
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
+import org.glassfish.jersey.server.wadl.WadlFeature;
 
 import javax.ws.rs.ApplicationPath;
 
@@ -15,6 +16,7 @@ public class ApplicationV1ResourceConfig extends ResourceConfig {
 
     public ApplicationV1ResourceConfig() {
         packages("fr.nargit.ranking.rest.v1")
+                .register(WadlFeature.class)
                 .register(JacksonFeature.class);
     }
 }

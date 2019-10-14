@@ -1,4 +1,4 @@
-FROM tomcat:8
+FROM tomcat:8.5.47-jdk11-openjdk
 MAINTAINER Tigran Tchougourian
 ARG WAR_NAME
 

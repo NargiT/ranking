@@ -1,7 +1,6 @@
 import fr.nargit.ranking.rest.v1.response.PlayerResponse;
 import fr.nargit.ranking.servlet.ApplicationV1ResourceConfig;
 import fr.nargit.ranking.spring.CustomSpringContextInitializer;
-import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.message.internal.MediaTypes;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.test.JerseyTest;
