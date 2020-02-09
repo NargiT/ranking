@@ -54,7 +54,7 @@ public class ContainerV1Test extends JerseyTest {
         .get(PlayerResponse.class);
 
     assertThat(playerResponse, CoreMatchers.notNullValue());
-    assertThat(playerResponse.getPlayerId(), CoreMatchers.equalTo("1"));
+    assertThat(playerResponse.getPlayerId(), CoreMatchers.nullValue());
     assertThat(playerResponse.getUsername(), CoreMatchers.nullValue());
   }
 
