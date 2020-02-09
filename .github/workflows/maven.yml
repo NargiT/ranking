@@ -1,12 +1,13 @@
-name: Maven build
+name: Maven
 
 on:
   push:
     branches:
-      - master
+    - master
   pull_request:
-    branches: 
-      - master
+    branches:
+    - master
+
   schedule:
   - cron: 0 2 * * 1-5
 

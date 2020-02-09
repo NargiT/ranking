@@ -1,4 +1,4 @@
-package fr.nargit.ranking.player;
+package fr.nargit.ranking.domain.player;
 
 /**
  * (c) 28-mars-2016

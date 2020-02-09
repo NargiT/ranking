@@ -1,6 +1,7 @@
 package fr.nargit.ranking.spring;
 
-import fr.nargit.ranking.player.PlayerManagerPojo;
+import fr.nargit.ranking.domain.player.PlayerManager;
+import fr.nargit.ranking.domain.player.PlayerManagerPojo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfig {
 
   @Bean
-  public PlayerManagerPojo getPlayersManagerPojo() {
+  public PlayerManager getPlayersManagerPojo() {
     return new PlayerManagerPojo();
   }
 }

@@ -1,4 +1,4 @@
-package fr.nargit.ranking.player;
+package fr.nargit.ranking.domain.player;
 
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
@@ -13,7 +13,7 @@ import org.junit.Test;
 public class PlayerManagerPojoTest {
 
   @Test
-  public void players() throws Exception {
+  public void players() {
     final PlayerManager playerManagerPojo = new PlayerManagerPojo();
 
     // when
@@ -21,7 +21,7 @@ public class PlayerManagerPojoTest {
   }
 
   @Test
-  public void enroll() throws Exception {
+  public void enroll() {
     final PlayerManager playerManagerPojo = new PlayerManagerPojo();
 
     // when
@@ -32,7 +32,7 @@ public class PlayerManagerPojoTest {
   }
 
   @Test
-  public void archive() throws Exception {
+  public void archive() {
     final PlayerManager playerManagerPojo = new PlayerManagerPojo();
     // when
     playerManagerPojo.enroll(new TestPlayer());
@@ -42,7 +42,7 @@ public class PlayerManagerPojoTest {
     Assert.assertThat(playerManagerPojo.players().size(), CoreMatchers.is(0));
   }
 
-  class TestPlayer implements Player {
+  static class TestPlayer implements Player {
 
     @Override
     public Integer id() {

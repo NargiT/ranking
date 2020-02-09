@@ -2,5 +2,21 @@
   "extends": [
     "config:base"
   ],
-  "reviewers": ["NargiT"]
+  "reviewers": [
+    "NargiT"
+  ],
+  "prCreation": "not-pending",
+  "rebaseStalePrs": true,
+  "rebaseConflictedPrs": true,
+  "patch": {
+    "automerge": true,
+    "automergeType": "pr",
+    "requiredStatusChecks": [
+      "Maven build / build (ubuntu-16.04, 1.8) (pull_request)",
+      "Maven build / build (ubuntu-18.04, 1.8) (pull_request)",
+      "Maven build / build (ubuntu-16.04, 11) (pull_request)",
+      "Maven build / build (ubuntu-18.04, 11) (pull_request)",
+      "workflow"
+    ]
+  }
 }
