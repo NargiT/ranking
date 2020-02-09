@@ -1,18 +1,13 @@
 # Java Maven CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-java/ for more details
-#
-version: 2
+version: 2.1
+executors:
+  openjdk-8-executor:
+    docker:
+    - image: circleci/openjdk:8-jdk
+
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+    executor: openjdk-8-executor
 
     working_directory: ~/repo
 
@@ -21,26 +16,26 @@ jobs:
       MAVEN_OPTS: -Xmx1g
 
     steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: false
+    - checkout
+    - setup_remote_docker:
+        docker_layer_caching: false
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - ranking-{{ checksum "pom.xml" }}
-            # fallback to using the latest cache if no exact match is found
-            - ranking-
+    # Download and cache dependencies
+    - restore_cache:
+        keys:
+        - ranking-{{ checksum "pom.xml" }}
+        # fallback to using the latest cache if no exact match is found
+        - ranking-
 
-      - run: mvn dependency:go-offline
+    - run: mvn dependency:go-offline
 
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: ranking-{{ checksum "pom.xml" }}
+    - save_cache:
+        paths:
+        - ~/.m2
+        key: ranking-{{ checksum "pom.xml" }}
 
-      # run tests!
-      - run: mvn integration-test
-      
-      - store_test_results:
-          path: target/surefire-reports
+    # run tests!
+    - run: mvn clean verify
+
+    - store_test_results:
+        path: target/surefire-reports
