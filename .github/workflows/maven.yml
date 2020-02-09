@@ -3,15 +3,17 @@ name: Maven build
 on:
   push:
     branches:
-      - master
+    - master
   pull_request:
-    branches: 
-      - master
+    branches:
+    - master
+
   schedule:
   - cron: 0 2 * * 1-5
 
 jobs:
   build:
+    name: all-build
 
     runs-on: ${{ matrix.os }}
     strategy:

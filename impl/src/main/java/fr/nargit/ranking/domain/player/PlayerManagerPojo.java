@@ -1,7 +1,5 @@
 package fr.nargit.ranking.player;
 
-import org.springframework.stereotype.Repository;
-
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
