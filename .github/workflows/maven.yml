@@ -13,7 +13,6 @@ on:
 
 jobs:
   build:
-    name: all-build
 
     runs-on: ${{ matrix.os }}
     strategy:
