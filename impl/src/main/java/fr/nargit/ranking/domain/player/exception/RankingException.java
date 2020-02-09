@@ -1,4 +1,4 @@
-package fr.nargit.ranking.player.exception;
+package fr.nargit.ranking.domain.player.exception;
 
 /**
  * Created by NargiT on 17/03/2016

@@ -1,6 +1,5 @@
 package fr.nargit.ranking.servlet;
 
-import fr.nargit.ranking.player.PlayerManagerPojo;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.wadl.WadlFeature;
@@ -12,12 +11,12 @@ import javax.ws.rs.ApplicationPath;
  *
  * @author tigran-mac
  */
-@ApplicationPath("api/v1")
+@ApplicationPath("/api/v1")
 public class ApplicationV1ResourceConfig extends ResourceConfig {
 
-    public ApplicationV1ResourceConfig() {
-        packages("fr.nargit.ranking.rest.v1")
-                .register(WadlFeature.class)
-                .register(JacksonFeature.class);
-    }
+  public ApplicationV1ResourceConfig() {
+    packages("fr.nargit.ranking.rest.v1")
+        .register(WadlFeature.class)
+        .register(JacksonFeature.class);
+  }
 }

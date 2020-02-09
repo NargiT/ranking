@@ -1,7 +1,7 @@
 package fr.nargit.ranking.rest.v1.exception;
 
-import fr.nargit.ranking.rest.v1.response.ErrorMessage;
 import fr.nargit.ranking.rest.v1.exception.utils.WebServiceUtils;
+import fr.nargit.ranking.rest.v1.response.ErrorMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -20,9 +20,9 @@ import javax.servlet.ServletException;
  * @author tigran-mac
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)
-public class CustomSpringContextInitializer implements WebApplicationInitializer {
+public class AnnotatedSpringWebSpringContextInitializer implements WebApplicationInitializer {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(CustomSpringContextInitializer.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(AnnotatedSpringWebSpringContextInitializer.class);
 
   @Override
   public void onStartup(ServletContext servletContext) throws ServletException {

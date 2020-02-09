@@ -6,6 +6,11 @@ package fr.nargit.ranking.rest.v1.entity;
  * @author tigran-mac
  */
 public class Player {
-  String username;
-  String avatar;
+  private final String username;
+  private final String avatar;
+
+  public Player(String username, String avatar) {
+    this.username = username;
+    this.avatar = avatar;
+  }
 }

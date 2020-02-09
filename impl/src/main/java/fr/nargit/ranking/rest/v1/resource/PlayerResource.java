@@ -1,24 +1,18 @@
 package fr.nargit.ranking.rest.v1.resource;
 
-import fr.nargit.ranking.player.PlayerManager;
-import fr.nargit.ranking.rest.v1.entity.Player;
+import fr.nargit.ranking.domain.player.DefaultPlayer;
+import fr.nargit.ranking.domain.player.Player;
+import fr.nargit.ranking.domain.player.PlayerManager;
 import fr.nargit.ranking.rest.v1.response.PlayerResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Path("players")
 @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -28,12 +22,18 @@ public class PlayerResource {
   private static final Logger LOGGER = LoggerFactory.getLogger(PlayerResource.class);
 
   @Inject
-  PlayerManager playerManager;
+  private PlayerManager playerManager;
 
   @GET
   public List<PlayerResponse> getPlayers() {
     LOGGER.info("getPlayers()");
-    return Arrays.asList(new PlayerResponse(), new PlayerResponse(), new PlayerResponse());
+    Player player = new DefaultPlayer(12, "jean");
+    playerManager.enroll(player);
+    return playerManager.players().stream().map(p -> {
+      PlayerResponse playerResponse = new PlayerResponse();
+      playerResponse.setUsername(p.name());
+      return playerResponse;
+    }).collect(Collectors.toList());
   }
 
   @GET

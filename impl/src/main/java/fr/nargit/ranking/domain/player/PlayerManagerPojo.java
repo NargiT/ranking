@@ -1,4 +1,4 @@
-package fr.nargit.ranking.player;
+package fr.nargit.ranking.domain.player;
 
 import java.util.HashSet;
 import java.util.LinkedList;
