@@ -160,6 +160,7 @@
                 </executions>
                 <configuration>
                     <repository>nargit/${project.name}</repository>
+                    <tag>${project.version}</tag>
                     <buildArgs>
                         <WAR_NAME>${project.build.finalName}</WAR_NAME>
                     </buildArgs>

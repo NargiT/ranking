@@ -5,6 +5,8 @@ import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Optional;
+
 /**
  * (c) 22-janv.-2017
  *
@@ -42,15 +44,28 @@ public class PlayerManagerPojoTest {
     Assert.assertThat(playerManagerPojo.players().size(), CoreMatchers.is(0));
   }
 
+  @Test
+  public void find() {
+    final PlayerManager playerManagerPojo = new PlayerManagerPojo();
+
+    Optional<Player> missingPlayer = playerManagerPojo.find("dude");
+    TestPlayer newPlayer = new TestPlayer();
+    playerManagerPojo.enroll(newPlayer);
+    Optional<Player> player = playerManagerPojo.find(newPlayer.display_name());
+
+    Assert.assertFalse(missingPlayer.isPresent());
+    Assert.assertTrue(player.isPresent());
+  }
+
   static class TestPlayer implements Player {
 
     @Override
-    public Integer id() {
-      return 1;
+    public Long id() {
+      return 1L;
     }
 
     @Override
-    public String name() {
+    public String display_name() {
       return "to";
     }
 

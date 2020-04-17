@@ -7,10 +7,10 @@ package fr.nargit.ranking.domain.player;
  */
 public class DefaultPlayer implements Player {
 
-  private Integer id;
+  private Long id;
   private String name;
 
-  public DefaultPlayer(Integer id, String name) {
+  public DefaultPlayer(Long id, String name) {
     this.id = id;
     this.name = name;
   }
@@ -34,12 +34,12 @@ public class DefaultPlayer implements Player {
   }
 
   @Override
-  public Integer id() {
+  public Long id() {
     return id;
   }
 
   @Override
-  public String name() {
+  public String display_name() {
     return name;
   }
 

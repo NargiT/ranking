@@ -1,5 +1,7 @@
 package fr.nargit.ranking.rest.v1.response;
 
+import fr.nargit.ranking.domain.player.Player;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -9,19 +11,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement
 public class PlayerResponse {
-  private String playerId;
+  private Long playerId;
   private String username;
   private Long rank;
   private String avatar;
 
   public PlayerResponse() {
+    // empty
   }
 
-  public String getPlayerId() {
+  public PlayerResponse(Player player) {
+    this.playerId = player.id();
+  }
+
+  public Long getPlayerId() {
     return playerId;
   }
 
-  public void setPlayerId(String playerId) {
+  public void setPlayerId(Long playerId) {
     this.playerId = playerId;
   }
 

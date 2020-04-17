@@ -13,4 +13,12 @@ public class Player {
     this.username = username;
     this.avatar = avatar;
   }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public String getAvatar() {
+    return avatar;
+  }
 }

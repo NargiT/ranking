@@ -7,9 +7,9 @@ package fr.nargit.ranking.domain.player;
  */
 public interface Player {
 
-  Integer id();
+  Long id();
 
-  String name();
+  String display_name();
 
   Double score();
 

@@ -1,9 +1,6 @@
 package fr.nargit.ranking.domain.player;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * (c) 22-janv.-2017
@@ -32,4 +29,16 @@ public class PlayerManagerPojo implements PlayerManager {
   public void archive(Player existingPlayer) {
     players.remove(existingPlayer);
   }
+
+  @Override
+  public Optional<Player> find(String name) {
+    Player foundPlayer = null;
+    for (Player player : players) {
+      if (foundPlayer == null && player.display_name().equalsIgnoreCase(name)) {
+        foundPlayer = player;
+      }
+    }
+    return Optional.ofNullable(foundPlayer);
+  }
+
 }
