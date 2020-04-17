@@ -18,5 +18,13 @@
       "Maven build / build (ubuntu-18.04, 11) (pull_request)",
       "workflow"
     ]
-  }
+  },
+  "packageRules": [
+    {
+      "packageNames": [
+        "tomcat"
+      ],
+      "allowedVersions": "<9"
+    }
+  ]
 }
