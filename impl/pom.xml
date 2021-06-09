@@ -68,7 +68,7 @@
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>2.3.3</version>
+            <version>3.0.1</version>
         </dependency>
         <!-- JAXB removal after java 11 -->
         <!-- http://www.descher.at/descher-vu/2019/01/java-11-jaxb-and-osgi/ -->
